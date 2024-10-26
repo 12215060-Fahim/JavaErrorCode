@@ -1,0 +1,60 @@
+Procedure_1: (With the help of varargs-methods overriding with different number of parameter)
+package oopexercise;
+
+public abstract class Shape {
+    abstract void calculateArea(double... dimensions);
+    abstract void calculatePerimeter(double... dimensions);
+}
+package oopexercise;
+
+public class Circle extends Shape {
+    double pi = 3.1416;
+
+    @Override
+    void calculateArea(double... dimensions) {
+        double r = dimensions[0];
+        double area = pi * r * r;
+        System.out.println("Area of Circle: " + area);
+    }
+
+    @Override
+    void calculatePerimeter(double... dimensions) {
+        double r = dimensions[0];
+        double perimeter = 2 * pi * r;
+        System.out.println("Perimeter of Circle: " + perimeter);
+    }
+}
+package oopexercise;
+
+public class Triangle extends Shape {
+
+    @Override
+    void calculateArea(double... dimensions) {
+        double a = dimensions[0];
+        double b = dimensions[1];
+        double area = 0.5 * a * b;
+        System.out.println("Area of Triangle: " + area);
+    }
+
+    @Override
+    void calculatePerimeter(double... dimensions) {
+        double a = dimensions[0];
+        double b = dimensions[1];
+        double c = dimensions[2];
+        double perimeter = a + b + c;
+        System.out.println("Perimeter of Triangle: " + perimeter);
+    }
+}
+package oopexercise;
+
+public class test {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        Triangle t = new Triangle();
+        
+        c.calculateArea(5);
+        c.calculatePerimeter(5);
+        t.calculateArea(5, 8);
+        t.calculatePerimeter(5, 7, 8);
+    }
+}
